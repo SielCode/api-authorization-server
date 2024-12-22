@@ -5,4 +5,4 @@ jobs:
   verify:
     uses: SielCode/github-utilities/.github/workflows/verify.yml@api_related_metadata_file_validation
     with:
-      apiRepositoryPath: ${{ github.workspace }}/api-authorization-server
+      apiRepositoryPath: ${{ github.workspace }}
