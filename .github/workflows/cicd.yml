@@ -3,6 +3,6 @@ run-name: ${{ github.actor }} is testing out OpenAPI spec validation
 on: [push]
 jobs:
   verify:
-    uses: SielCode/github-utilities/.github/workflows/api-first/verify.yml@api_related_metadata_file_validation
+    uses: SielCode/github-utilities/.github/workflows/verify.yml@api_related_metadata_file_validation
     with:
       apiRepositoryPath: ${{ github.workspace }}/api-authorization-server
