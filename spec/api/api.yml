@@ -1,0 +1,152 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Simple API",
+    "description": "A basic example of an OpenAPI 3.0.0 specification.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.example.com/v1",
+      "description": "Production Server"
+    },
+    {
+      "url": "https://staging.api.example.com/v1",
+      "description": "Staging Server"
+    }
+  ],
+  "paths": {
+    "/items": {
+      "get": {
+        "summary": "List all items",
+        "description": "Retrieve a list of items.",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ItemListResponse"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new item",
+        "description": "Add a new item to the collection.",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/ItemCreateRequestBody"
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/ItemCreatedResponse"
+          }
+        }
+      }
+    },
+    "/items/{id}": {
+      "get": {
+        "summary": "Get an item",
+        "description": "Retrieve details of a specific item.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the item to retrieve.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ItemDetailsResponse"
+          },
+          "404": {
+            "$ref": "#/components/responses/ItemNotFoundResponse"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "ItemListResponse": {
+        "description": "A list of items.",
+        "content": {
+          "application/json": {
+            "$ref": "#/components/contentSchemas/ItemListContent"
+          }
+        }
+      },
+      "ItemCreatedResponse": {
+        "description": "Item created successfully."
+      },
+      "ItemDetailsResponse": {
+        "description": "Details of the item.",
+        "content": {
+          "application/json": {
+            "$ref": "#/components/contentSchemas/ItemDetailsContent"
+          }
+        }
+      },
+      "ItemNotFoundResponse": {
+        "description": "Item not found."
+      }
+    },
+    "requestBodies": {
+      "ItemCreateRequestBody": {
+        "description": "Item to add",
+        "required": true,
+        "content": {
+          "application/json": {
+            "$ref": "#/components/contentSchemas/ItemCreateContent"
+          }
+        }
+      }
+    },
+    "contentSchemas": {
+      "ItemListContent": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "123"
+              },
+              "name": {
+                "type": "string",
+                "example": "Item Name"
+              }
+            }
+          }
+        }
+      },
+      "ItemCreateContent": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "example": "New Item"
+            }
+          },
+          "required": ["name"]
+        }
+      },
+      "ItemDetailsContent": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "example": "123"
+            },
+            "name": {
+              "type": "string",
+              "example": "Item Name"
+            }
+          }
+        }
+      }
+    }
+  }
+}
