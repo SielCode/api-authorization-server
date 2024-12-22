@@ -11,4 +11,4 @@ jobs:
         shell: bash
         run: echo "XD"
       - name: second
-        uses: SielCode/github-utilities/.github/actions/verify_metadata.yml@api_related_metadata_file_validation
+        uses: SielCode/github-utilities/.github/actions/verify_metadata@api_related_metadata_file_validation
