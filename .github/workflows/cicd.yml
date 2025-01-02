@@ -1,5 +1,5 @@
 name: cicd
-run-name: ${{ github.actor }} isesting out OpenAPI spec validation
+run-name: ${{ github.actor }} isssesting out OpenAPI spec validation
 on: [push]
 jobs:
   verify:
