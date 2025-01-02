@@ -3,4 +3,4 @@ run-name: ${{ github.actor }} isssestsdasding out OpenAPI spec validation
 on: [push]
 jobs:
   verify:
-    uses: SielCode/github-utilities/.github/workflows/verify.yml@api_related_metadata_file_validation
+    uses: github-utilities/.github/workflows/verify.yml@api_related_metadata_file_validation
